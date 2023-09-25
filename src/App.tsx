@@ -3,8 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "./store/itemsSlice";
-import { Item, ItemsState } from "./types/types";
+import { addItem, removeItem } from "./store/itemsSlice";
+import { State, CatalogItem } from "./types/types";
 // import apiCatalog from './api/api'
 
 function App() {
@@ -12,9 +12,15 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const items = useSelector<ItemsState, Item[]>((state) => state.items.items);
+  const items = useSelector<State, CatalogItem[]>(
+    (state) => state.items.catalog
+  );
 
-  console.log(items)
+  const basketItems = useSelector<State, CatalogItem[]>((state) => {
+    console.log(state);
+    return state.items.basket;
+  });
+
   return (
     <>
       <div>
@@ -39,16 +45,45 @@ function App() {
       </p>
       <button
         onClick={() => {
-          dispatch(addItem({ text:'qqq' }));
+          dispatch(addItem({ text: "qqq" }));
         }}
       >
         btn
       </button>
 
+      <h2>Catalog</h2>
       <ul>
-        {items.map((item:Item) => (
-          <li key={item.id}>{item.text}</li>
+        {items.map((item: CatalogItem) => (
+          // <button onClick={() => {dispatch( addItem({ item }) )}}>
+          //   <li key={item.id} >
+          //     {item.name}
+          //   </li>
+          // </button>
+          <li
+            key={item.id}
+            onClick={() => {
+              dispatch(addItem(item));
+              // console.log(item);
+            }}
+          >
+            {item.name}
+          </li>
+
           // <span key={item.id}>{item.text}</span>
+        ))}
+      </ul>
+
+      <h2>Basket</h2>
+      <ul>
+        {basketItems.map((item: CatalogItem) => (
+          <li
+            key={item.id}
+            onClick={() => {
+              dispatch(removeItem(item));
+            }}
+          >
+            {item.name}
+          </li>
         ))}
       </ul>
     </>

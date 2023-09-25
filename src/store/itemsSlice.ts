@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ItemsState } from "../types/types";
+import { CatalogState } from "../types/types";
+import apiCatalog from "../api/api";
 
+// const catalogState:CatalogState = {
+//   catalog: await apiCatalog<CatalogItem[]>(),
+// }
+// console.log(catalogState())
 
-
-const initialState: ItemsState = {
-  items: [],
+const initialState: CatalogState = {
+  catalog: await apiCatalog(),
+  basket: [],
 };
 
 const itemsSlice = createSlice({
@@ -12,15 +17,15 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      state.items.push({
-        id: new Date().toISOString(),
-        text: action.payload.text,
-        completed: false,
-      });
+      state.basket.push(action.payload);
+    },
+    removeItem(state, action) {
+      state.basket = state.basket.filter((item) => item.id !== action.payload.id);
     },
   },
 });
-console.log(12333)
+// console.log(initialState);
+// console.log()
 
 export const { addItem } = itemsSlice.actions;
 
