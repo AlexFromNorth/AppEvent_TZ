@@ -1,0 +1,8 @@
+.catalog_item__name{
+    min-height: 50px;
+}
+.catalog_item__img{
+    max-width: 100%;
+    height: 300px;
+    background-size: contain;
+}

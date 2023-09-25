@@ -27,6 +27,6 @@ const itemsSlice = createSlice({
 // console.log(initialState);
 // console.log()
 
-export const { addItem } = itemsSlice.actions;
+export const { addItem, removeItem } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
