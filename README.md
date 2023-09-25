@@ -30,4 +30,4 @@ If you are developing a production application, we recommend updating the config
 # AppEvent_TZ
 
 
-react/ ts/ redux/ materialUI/ scss/ vite
+react/ ts/ redux/ materialUI/ scss/ vite/ axios

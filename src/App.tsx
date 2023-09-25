@@ -1,11 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "./store/itemsSlice";
+import { Item, ItemsState } from "./types/types";
+// import apiCatalog from './api/api'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  const dispatch = useDispatch();
+
+  const items = useSelector<ItemsState, Item[]>((state) => state.items.items);
+
+  console.log(items)
   return (
     <>
       <div>
@@ -28,8 +37,22 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button
+        onClick={() => {
+          dispatch(addItem({ text:'qqq' }));
+        }}
+      >
+        btn
+      </button>
+
+      <ul>
+        {items.map((item:Item) => (
+          <li key={item.id}>{item.text}</li>
+          // <span key={item.id}>{item.text}</span>
+        ))}
+      </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
