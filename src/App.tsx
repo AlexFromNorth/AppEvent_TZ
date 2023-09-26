@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Basket from "./components/basket/Basket";
 
 function App() {
+  
   return (
     <>
       <Header />

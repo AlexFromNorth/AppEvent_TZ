@@ -3,4 +3,11 @@
     justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 3px solid rgba(112, 105, 105, 0.253);
+    position: fixed;
+    width: 84.5%;
+    z-index: 100;
+    a{
+        text-shadow: 1px 1px 5px black;
+
+    }
 }

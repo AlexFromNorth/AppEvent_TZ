@@ -26,11 +26,12 @@ a:hover {
 body {
   background-color: #242424;
   margin: 0;
+
   display: flex;
   place-items: center;
   min-width: 320px;
   /* min-height: 100vh; */
-  padding: 3rem 7rem 4rem;
+  padding: 2rem 7rem 4rem;
 }
 
 h1 {

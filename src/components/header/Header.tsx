@@ -4,12 +4,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo.png";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { CatalogItem, State } from "../../types/types";
 
 const Header = () => {
-
-      // Получение всех элементов из каталога
+  // Получение всех элементов из каталога
   const basketItems = useSelector<State, CatalogItem[]>((state) => {
     return state.items.basket;
   });
@@ -27,8 +26,9 @@ const Header = () => {
         </Box>
         <Box>
           <Link to="/basket">
-            <ShoppingCartIcon />
-            <span>{basketItems.length}</span>
+            Корзина
+            <ShoppingCartIcon  sx={{margin:'0 -4px -6px 10px'}}/>
+            {basketItems.length}
           </Link>
         </Box>
       </Box>

@@ -15,9 +15,11 @@ const itemsSlice = createSlice({
   reducers: {
     addItem(state, action) {
       state.basket.push(action.payload);
+      localStorage.setItem("basket", JSON.stringify(state.basket));
     },
     removeItem(state, action) {
       state.basket = state.basket.filter((item) => item.id !== action.payload.id);
+      localStorage.setItem("basket", JSON.stringify(state.basket));
     },
   },
 });
