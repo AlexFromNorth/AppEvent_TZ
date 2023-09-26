@@ -31,3 +31,5 @@ If you are developing a production application, we recommend updating the config
 
 
 react/ ts/ redux/ materialUI/ scss/ vite/ axios/ bootstrap
+
+стилизовать корзину и закешировать товары из корзины

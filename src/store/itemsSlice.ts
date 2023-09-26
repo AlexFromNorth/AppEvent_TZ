@@ -2,16 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CatalogState } from "../types/types";
 import apiCatalog from "../api/api";
 
-// const catalogState:CatalogState = {
-//   catalog: await apiCatalog<CatalogItem[]>(),
-// }
-// console.log(catalogState())
-
+// глобальный state
 const initialState: CatalogState = {
   catalog: await apiCatalog(),
   basket: [],
 };
 
+// редусеры для изменения state
 const itemsSlice = createSlice({
   name: "items",
   initialState,
@@ -24,8 +21,6 @@ const itemsSlice = createSlice({
     },
   },
 });
-// console.log(initialState);
-// console.log()
 
 export const { addItem, removeItem } = itemsSlice.actions;
 

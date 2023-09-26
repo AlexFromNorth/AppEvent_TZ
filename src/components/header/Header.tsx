@@ -9,9 +9,11 @@ import { CatalogItem, State } from "../../types/types";
 
 const Header = () => {
 
+      // Получение всех элементов из каталога
   const basketItems = useSelector<State, CatalogItem[]>((state) => {
     return state.items.basket;
   });
+
   return (
     <header className={styles.header}>
       <Box>

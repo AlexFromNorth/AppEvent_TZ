@@ -1,6 +1,6 @@
 import axios from "axios";
-// import { findBooks, test } from "../store/itemsSlice";
 
+// запрос наполучение карточекс товаров
 const apiCatalog = async () => {
   try {
     const response = await axios.get(`https://appevent.ru/dev/task1/catalog`);
