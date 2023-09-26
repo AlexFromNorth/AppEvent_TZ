@@ -1,9 +1,11 @@
+// Catalog.js
+
 import { useDispatch, useSelector } from "react-redux";
 import { CatalogItem, State } from "../../types/types";
 import { addItem } from "../../store/itemsSlice";
 import { Box, Grid } from "@mui/material";
-import styles from "./Catalog.module.css";
-import { useState } from "react";
+import styles from "./Catalog.module.scss";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -11,12 +13,16 @@ function Catalog() {
   const dispatch = useDispatch();
 
   // Получение всех элементов из каталога
-  const items = useSelector<State, CatalogItem[]>(
-    (state) => state.items.catalog
-  );
+  const items = useSelector<State, CatalogItem[]>((state) => state.items.catalog);
 
   // Создаем локальное состояние для отслеживания добавления в корзину для каждого элемента
   const [isAddedToCart, setIsAddedToCart] = useState({});
+
+  useEffect(() => {
+    // Получаем корзину из localStorage при инициализации компонента
+    const basketFromLocalStorage = JSON.parse(localStorage.getItem("basket")) || {};
+    setIsAddedToCart(basketFromLocalStorage);
+  }, []);
 
   const handleAddToCart = (itemId) => {
     dispatch(addItem(items.find((item) => item.id === itemId))); // Добавляем элемент в корзину по id

@@ -6,3 +6,6 @@
 p,span,h3,h2,h4{
   color: white;
 }
+button{
+  z-index: 200;
+}

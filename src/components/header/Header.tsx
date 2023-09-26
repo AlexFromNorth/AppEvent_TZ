@@ -12,7 +12,9 @@ const Header = () => {
   const basketItems = useSelector<State, CatalogItem[]>((state) => {
     return state.items.basket;
   });
+  const basketItem = JSON.parse(localStorage.getItem("basket")) || [];
 
+console.log(basketItem)
   return (
     <header className={styles.header}>
       <Box>
@@ -28,7 +30,8 @@ const Header = () => {
           <Link to="/basket">
             Корзина
             <ShoppingCartIcon  sx={{margin:'0 -4px -6px 10px'}}/>
-            {basketItems.length}
+            {basketItem.length}
+            {/* {basketItems1.length} */}
           </Link>
         </Box>
       </Box>
